@@ -3,6 +3,7 @@ import { X } from 'react-feather'
 
 const Editable = (props) => {
   const [showEdit, setShowEdit] = useState(false);
+  const [inputValue, setInputValue] = useState(props.default || "")
 
   return (
     <>
@@ -16,7 +17,7 @@ const Editable = (props) => {
               if (props.onSubmit) props.onSubmit();
             }}
           >
-            <input type="text" placeholder={props.placeholder || "Enter Item"} defaultValue={props.text} className=' rounded-sm outline-none border-2 border-cyan-300 p-[10px]'/>
+            <input autoFocus type="text" placeholder={props.placeholder || "Enter Item"} defaultValue={props.text} className=' rounded-sm outline-none border-2 border-cyan-300 p-[10px]'/>
             {/* editable_edit_footer */}
             <div className=' flex gap-[10px] items-center'>
               <button type="submit" className=' outline-none border-none bg-cyan-500 hover:bg-cyan-700 transition-colors duration-200 p-[10px] rounded-md text-white'>{props.buttonText || "Add"}</button>

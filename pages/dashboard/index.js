@@ -39,7 +39,13 @@ const index = () => {
         <div className=' min-w-fit flex gap-14 border-2 border-slate-800 mt-5 h-full p-[20px] pb-[5px]'>
           <Board/>
           <Board/>
-          <Editable/>
+          {/* app_boards_board */}
+          <div className=' min-w-[290px] w-[290px]'>
+            <Editable
+              text = "Add Board"
+              placeholder = "Enter board title"
+            />
+          </div>
         </div>
       </div>
     </>

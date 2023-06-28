@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MoreHorizontal } from 'react-feather'
 import Card from '../Card/Card'
 import Editable from '../Editable/Editable'
+import Dropdown from '../Dropdown/Dropdown'
 
 const Board = () => {
+
+    const [showDropdown, setShowDropdown] = useState(false)
+
+
   return (
     <>
         <div className=' min-w-[290px] flex flex-col gap-[20px] bg-red-100 max-h-full h-full'>
@@ -14,7 +19,22 @@ const Board = () => {
                     To Do{' '}<span className=' text-slate-700'>2</span> 
                 </p>
 
-                <MoreHorizontal/>
+                {/* div_top_more */}
+                <div className='relative text-black' onClick={()=>setShowDropdown(true)}>
+                    <MoreHorizontal/>
+                    {
+                        showDropdown && 
+                    
+                        <Dropdown
+                            // onClose = {()=>setShowDropdown(false)}
+                        >
+                            {/* board_dropdown */}
+                            <div>
+                                <p>Delete Board</p>
+                            </div>
+                        </Dropdown>
+                    }
+                </div>
 
             </div>
             {/* board_cards */}
