@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { CheckSquare, Clock, MoreHorizontal } from "react-feather";
 import Chip from "../Chip/Chip";
 import CardInfo from "./CardInfo/CardInfo";
+import Dropdown from "../Dropdown/Dropdown";
 
-const Card = () => {
+const Card = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false)
+
+  // console.log(props.card.labels[0].text)
 
   return (
     <>
@@ -18,18 +22,35 @@ const Card = () => {
         <div className=" flex gap-[5px] bg-yellow-200">
           {/* card_top_lables */}
           <div className=" flex-1 flex gap-[10px]">
-            <Chip text="Frontend" color="green" />
-            <Chip close text="Frontend" color="green" />
+            {
+              props.card?.labels?.map((item,index)=>
+                <Chip key={index} text={item.text} color={item.color} />
+              )
+            }
           </div>
-          <MoreHorizontal className=" opacity-0 hover:opacity-100 transition-opacity duration-300" />
+          {/* card_top_more */}
+
+          <div onClick={() => setShowDropdown(true)}>
+            <MoreHorizontal className=" opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            {
+              showDropdown && (
+                <Dropdown onClose={() => setShowDropdown(false)}>
+                  {/* card_dropdown */}
+                  <div>
+                    <p onClick={() => props.removeCard(props.card?.id,props.boardId)}>Delete Card</p>
+                  </div>
+                </Dropdown>
+              )
+            }
+          </div>
         </div>
         {/* card_title */}
-        <div className=" font-semibold">title</div>
+        <div className=" font-semibold">{props.card?.title}</div>
         {/* card_footer */}
         <div className=" flex justify-between items-center">
           <p className=" flex gap-[5px] items-center">
             <Clock />
-            29 Sep
+            {props.card?.date}
           </p>
           <p className=" flex gap-[5px] items-center">
             <CheckSquare />

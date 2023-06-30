@@ -4,9 +4,11 @@ import Card from '../Card/Card'
 import Editable from '../Editable/Editable'
 import Dropdown from '../Dropdown/Dropdown'
 
-const Board = () => {
+const Board = (props) => {
 
     const [showDropdown, setShowDropdown] = useState(false)
+
+    // console.log(props)
 
 
   return (
@@ -15,8 +17,8 @@ const Board = () => {
             {/* board_top */}
             <div className=' flex'>
                 {/* board_top_title */}
-                <p className=' flex-1 flex align-middle'>
-                    To Do{' '}<span className=' text-slate-700'>2</span> 
+                <p className=' flex-1 flex align-middle gap-[8px]'>
+                    {props.board?.title}<span className=' text-slate-700'>{` ${props.board?.cards?.length}`}</span> 
                 </p>
 
                 {/* div_top_more */}
@@ -30,7 +32,7 @@ const Board = () => {
                         >
                             {/* board_dropdown */}
                             <div>
-                                <p>Delete Board</p>
+                                <p onClick={()=>props.removeBoard(props.board?.id)}>Delete Board</p>
                             </div>
                         </Dropdown>
                     }
@@ -38,14 +40,19 @@ const Board = () => {
 
             </div>
             {/* board_cards */}
-            <div className=' bg-[#f8f8f8] flex flex-col gap-[10px] p-[10px] border-b-[10px] overflow-y-auto h-full flex-1 scrollbar'>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+            <div className=' bg-[#f3f0f0] flex flex-col gap-[10px] p-[10px] border-b-[10px] overflow-y-auto h-full flex-1 scrollbar'>
+                {
+                    props.board?.cards?.map(item => <Card
+                        key={item.id}
+                        card={item}
+                        removeCard={props.removeCard}
+                        boardId={props.board?.id}
+                    />)
+                }
                 <Editable
                     text = "Add Card"
                     placeholder = "Enter Card Title"
+                    onSubmit={(value) => props.addCard(value,props.board?.id)}
                 />
             </div>
         </div>

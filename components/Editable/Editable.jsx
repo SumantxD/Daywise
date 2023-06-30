@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { X } from 'react-feather'
+import React, { useState } from "react";
+import { X } from "react-feather";
 
 const Editable = (props) => {
   const [showEdit, setShowEdit] = useState(false);
-  const [inputValue, setInputValue] = useState(props.default || "")
+  //in the onSubmit of form we will require the input value which can be kept track using useState
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <>
@@ -14,24 +15,47 @@ const Editable = (props) => {
             className={` ${props.editClass || ""} flex flex-col gap-[10px]`}
             onSubmit={(event) => {
               event.preventDefault();
-              if (props.onSubmit) props.onSubmit();
+              if (props.onSubmit) props.onSubmit(inputValue);
+              setShowEdit(false)
+              setInputValue("")
             }}
           >
-            <input autoFocus type="text" placeholder={props.placeholder || "Enter Item"} defaultValue={props.text} className=' rounded-sm outline-none border-2 border-cyan-300 p-[10px]'/>
+            <input
+              autoFocus
+              type="text"
+              placeholder={props.placeholder || "Enter Item"} 
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              className=" rounded-sm outline-none border-2 border-cyan-300 p-[10px]"
+            />
             {/* editable_edit_footer */}
-            <div className=' flex gap-[10px] items-center'>
-              <button type="submit" className=' outline-none border-none bg-cyan-500 hover:bg-cyan-700 transition-colors duration-200 p-[10px] rounded-md text-white'>{props.buttonText || "Add"}</button>
-              <X onClick={() => setShowEdit(false)} className=' cursor-pointer'/>
+            <div className=" flex gap-[10px] items-center">
+              <button
+                type="submit"
+                className=" outline-none border-none bg-cyan-500 hover:bg-cyan-700 transition-colors duration-200 p-[10px] rounded-md text-white"
+              >
+                {props.buttonText || "Add"}
+              </button>
+              <X
+                onClick={() => setShowEdit(false)}
+                className=" cursor-pointer"
+              />
             </div>
           </form>
         ) : (
           // editable_display
-          <p className={` ${props.displayClass || ""} bg-[#f8f8f8] rounded-md p-[10px] text-center hover:bg-[#ccc] transition-colors duration-200 cursor-default shadow-md`} onClick={() => setShowEdit(true)}>{props.text || "Add item"}</p>
+          <p
+            className={` ${
+              props.displayClass || ""
+            } bg-[#f8f8f8] rounded-md p-[10px] text-center hover:bg-[#ccc] transition-colors duration-200 cursor-default shadow-md`}
+            onClick={() => setShowEdit(true)}
+          >
+            {props.text || "Add item"}
+          </p>
         )}
       </div>
     </>
   );
 };
 
-
-export default Editable
+export default Editable;
