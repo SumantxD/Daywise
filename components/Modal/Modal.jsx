@@ -5,7 +5,7 @@ const Modal = (props) => {
     <>
       {/* modal */}
       <div
-        className=" fixed top-0 left-0 h-[100vh] w-full bg-slate-700  bg-opacity-50 flex items-center justify-center"
+        className=" fixed top-0 left-0 h-[100vh] w-full bg-slate-700  bg-opacity-50 flex items-center justify-center z-10"
         onClick={() => (props.onClose ? props.onClose() : "")}
       >
         {/* modal_content */}
