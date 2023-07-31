@@ -8,8 +8,8 @@ const Navbar = () => {
         <Link href="/" className='my-auto'>
           <div className=" flex">
             <p className=" my-auto text-2xl">[</p>
-            <p className=" my-auto text-2xl text-[#97d3f6]">DAY</p>
-            <p className=" my-auto text-2xl text-[#cc79fa]">WISE</p>
+            <p className=" my-auto text-2xl text-[#97d3f6]">SELF</p>
+            <p className=" my-auto text-2xl text-[#cc79fa]">GPT</p>
             <p className=" my-auto text-2xl">]</p>
           </div>
         </Link>

@@ -98,7 +98,7 @@ const CardInfo = (props) => {
             {/* cardinfo_box_title */}
             <div className=" flex gap-[10px] items-center">
               <Type />
-              Title 
+              Title &#128054;
             </div>
             <div className=" w-fit">
               <Editable
@@ -116,7 +116,7 @@ const CardInfo = (props) => {
             {/* cardinfo_box_title */}
             <div className=" flex gap-[10px] items-center">
               <List />
-              Description
+              Description 📒
             </div>
             <div className=" w-fit">
               <Editable
@@ -133,7 +133,7 @@ const CardInfo = (props) => {
             {/* cardinfo_box_title */}
             <div className=" flex gap-[10px] items-center">
               <Calendar />
-              Date
+              Date 📅
             </div>
             <div className=" w-fit">
               <input
@@ -150,9 +150,9 @@ const CardInfo = (props) => {
             {/* cardinfo_box_title */}
             <div className=" flex gap-[10px] items-center">
               <Tag />
-              Labels
+              Labels 🏷️
             </div>
-            {/* cardinfo_box_labels */}
+            {/* cardinfo_box_labels */}npm i hnswlib-node langchain dotenv
             <div className=" flex gap-[10px] flex-wrap">
               {values.labels?.map((item, index) => (
                 <Chip
@@ -197,7 +197,7 @@ const CardInfo = (props) => {
             {/* cardinfo_box_title */}
             <div className=" flex gap-[10px] items-center">
               <FileText />
-              Enter Document
+              Enter Document 📋
             </div>
             <div className=" w-fit">
               <input

@@ -13,14 +13,14 @@ export default function Home() {
           <div className=" bg-[#97d3f6] h-[55vh] aspect-square -z-20 rounded-full absolute transform -translate-x-[13rem] -translate-y-[10rem]"></div>
 
           <div className=" text-9xl font-extrabold font-[Open Sans] flex">
-            <p className=" text-[#97d3f6] mr-3">Day</p>
-            <p className=" text-[#cc79fa]">Wise</p>
+            <p className=" text-[#97d3f6] mr-3">Self</p>
+            <p className=" text-[#cc79fa]">GPT</p>
           </div>
 
           <div className="flex">
             <div>
               <p className=" mt-2 text-xl text-[#cc79fa]">
-                make everyday memorable !
+                meet your AI self !
               </p>
 
               <p className=" mt-20 ml-2 mb-2">today is : -</p>
@@ -53,7 +53,7 @@ export default function Home() {
               <Link href="/dashboard">
                 <button className="  border-[#2c316a] rounded-xl text-xl font-medium p-5 mt-14 bg-[#ef087bb6] hover:bg-[#ef087a] duration-500 transition-all">
                   {" "}
-                  make it memorable ^_*
+                  Drop a Note
                 </button>
               </Link>
             </div>

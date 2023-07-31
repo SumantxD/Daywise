@@ -1,4 +1,5 @@
 import Board from '@/components/Board/Board'
+import Chat from '@/components/Chat/Chat';
 import Editable from '@/components/Editable/Editable'
 import React, { useEffect, useState } from 'react'
 
@@ -90,6 +91,18 @@ const index = () => {
 //     localStorage.setItem("kanban", JSON.stringify(boards));
 //   }
 // }, [boards]);
+
+//Working of the datta storage
+/*
+--> the prev data will be stored in the local storage
+--> for there first we extract it and store it in the board state
+--> we also update the local storage whenever the board state is updated 
+--> it is a higher level state which will manage all the data 
+--> for the file download first we will have to create a function which will 
+--> download all the relevant data --> and then prepare a downloadable file from it 
+--> which can be plugged in the flowise application --> and then we can chat with the data 
+
+*/
 
 const initialState = isClient ? JSON.parse(localStorage.getItem('kanban')) || [] : [];
 
@@ -264,11 +277,53 @@ const initialState = isClient ? JSON.parse(localStorage.getItem('kanban')) || []
 
   }
 
+  //function to extract all the data into a usable format 
+  //first create a button and on-click event listner 
+  //on the click event this function will get trigerred
+  //it is running successfully 
+  
+  function generateFormattedString(boards) {
+    let formattedString = '';
+  
+    for (const board of boards) {
+      formattedString += `Title: ${board.title}\n\n`;
+  
+      for (const card of board.cards) {
+        formattedString += `Subtitle: ${card.title} `;
+        for (const label of card.labels) {
+          formattedString += `${label.text} / `;
+        }
+        formattedString += '\n';
+  
+        formattedString += `Description: ${card.desc}\n\n`;
+      }
+  
+      formattedString += '\n\n';
+    }
+  
+    return formattedString;
+  }
+
+  const extractData = () => {
+    // console.log(boards);
+    // JSON.stringify(boards)
+    // console.log(JSON.stringify(boards))
+    const result = generateFormattedString(boards);
+    console.log(result);
+  };
+
 
 
   return (
     <>
       {/* app_outer */}
+      <button
+        onClick={extractData}
+        className="fixed bottom-12 right-20 border-[#2c316a] rounded-xl text-3xl font-medium p-5 mt-14 bg-[#ef087bb6] hover:bg-[#ef087a] duration-500 transition-all"
+      >
+        📒
+      </button>
+      <Chat/>
       <div className=' px-[15vw] h-[90vh]'>
         {/* <div className=' w-full h-[25vh] border-2 border-slate-800 mt-5 '> */}
         {/* <div className=' w-full h-[25vh] mt-5 '>
