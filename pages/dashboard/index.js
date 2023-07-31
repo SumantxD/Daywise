@@ -319,7 +319,7 @@ const initialState = isClient ? JSON.parse(localStorage.getItem('kanban')) || []
       {/* app_outer */}
       <button
         onClick={extractData}
-        className="fixed bottom-12 right-20 border-[#2c316a] rounded-xl text-3xl font-medium p-5 mt-14 bg-[#ef087bb6] hover:bg-[#ef087a] duration-500 transition-all"
+        className="fixed bottom-24 right-5 border-[#2c316a] rounded-full text-2xl font-medium p-5 mt-14 bg-[#ef087bb6] hover:bg-[#ef087a] duration-500 transition-all"
       >
         📒
       </button>
@@ -348,7 +348,7 @@ const initialState = isClient ? JSON.parse(localStorage.getItem('kanban')) || []
           {/* app_boards_board */}
           <div className=' min-w-[290px] w-[290px]'>
             <Editable
-              text = "Add Board"
+              text = "Add Board +"
               placeholder = "Enter board title"
               onSubmit={(value) => addBoard(value)}
             />
