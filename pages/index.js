@@ -1,13 +1,6 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
-// import File from '@/components/FielExtract/File';
-
-import dynamic from 'next/dynamic';
-
-const DynamicComponent = dynamic(() => import('@/components/FielExtract/File'), {
-  ssr: false, // Disable SSR for this component
-});
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -92,8 +85,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <File/> */}
-      <DynamicComponent />
     </>
   );
 }
