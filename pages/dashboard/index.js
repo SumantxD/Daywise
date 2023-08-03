@@ -177,10 +177,22 @@ const initialState = isClient ? JSON.parse(localStorage.getItem('kanban')) || []
     return formattedString;
   }
 
-  const extractData = () => {
-    const result = generateFormattedString(boards);
-    console.log(result);
-  };
+ const extractData = () => {
+  const result = generateFormattedString(boards);
+
+  const fileName = 'combined_data.txt';
+  const blob = new Blob([result], { type: 'text/plain' });
+
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(blob);
+  downloadLink.download = fileName;
+
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+
+  console.log(result);
+};
 
 
 
