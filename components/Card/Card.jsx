@@ -23,8 +23,6 @@ const Card = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false)
 
-  // console.log(props.card.labels[0].text)
-
 
   return (
     <>
@@ -89,10 +87,14 @@ const Card = (props) => {
             <Clock />
             {props.card?.date}
           </p>
-          <p className=" flex gap-[5px] items-center">
+          {/* <p className=" flex gap-[5px] items-center">
             <CheckSquare />
             1/4
-          </p>
+          </p> */}
+        </div>
+        <div className=" max-h-12 overflow-y-hidden">
+        {/* CardInfo */}
+        {props.card.desc}
         </div>
         {/* card_top_lables */}
         <div className=" justify-end flex gap-[10px]">

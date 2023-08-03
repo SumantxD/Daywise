@@ -1,6 +1,13 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+// import File from '@/components/FielExtract/File';
+
+import dynamic from 'next/dynamic';
+
+const DynamicComponent = dynamic(() => import('@/components/FielExtract/File'), {
+  ssr: false, // Disable SSR for this component
+});
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -57,10 +64,36 @@ export default function Home() {
                 </button>
               </Link>
             </div>
-            <div className=" border-2 border-slate-900 w-full ml-7">apple</div>
+            <div className=" w-full ml-7 flex">
+              <div className="flex flex-col justify-center mx-auto gap-5">
+                <h1 className=" text-3xl">Built by: Sumant_XD</h1>
+                <a href="https://github.com/SumantxD/selfGPT">
+                  <div>
+                    Github{" "}
+                    <img
+                      src="https://img.shields.io/github/last-commit/SumantxD/selfGPT
+"
+                      alt=""
+                    />{" "}
+                  </div>
+                </a>
+                <a href="https://twitter.com/SumantXd">
+                  <div>
+                    Twitter{" "}
+                    <img
+                      src="https://img.shields.io/twitter/follow/SumantXd
+"
+                      alt=""
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      {/* <File/> */}
+      <DynamicComponent />
     </>
   );
 }
