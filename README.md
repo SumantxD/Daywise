@@ -17,7 +17,8 @@
          alt="GitHub pull requests">
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+[Screencast from 03-08-23 07:27:52 PM -05.webm](https://github.com/SumantxD/selfGPT/assets/65810424/b78b3ec7-c7ea-4192-8991-d9734e6970f1)
+
 
 
 ## Introduction
